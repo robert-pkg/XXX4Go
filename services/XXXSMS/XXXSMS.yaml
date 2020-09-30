@@ -1,0 +1,5 @@
+log:
+  logPath:  !!str /data/log/XXXSMS/XXXSMS.log
+  level: !!str info
+  encoding: !!str json
+  output_console: !!bool true

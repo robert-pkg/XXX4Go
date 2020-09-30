@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+package community.interface.XXXLoginServer;
+
+// specify golang package name
+option go_package = "api";
+
+// NoArgReq
+message NoArgRequest{}
+// NoReply
+message NoReply{}
+
+message SendVerifyCodeReq {
+    string mobile = 1; 
+}
+
+message SendVerifyCodeReply {
+    int32 code = 1;         // 返回码 
+    string message = 2;     // 返回消息
+    string vcode = 3;       // 验证码
+}
+
+
+message LoginReq {
+    string mobile = 1; 
+    string device_type =2;   // web, android, ios
+    string verify_code = 3; 
+}
+
+message LoginReplyData {
+    int64 user_id = 3;
+    string token = 4;
+    int64 expire_ts = 5; // 失效时间戳
+}
+
+message LoginReply {
+    int32 code = 1;         // 返回码 
+    string message = 2;     // 返回消息
+    LoginReplyData data = 3;
+}
+
+message VerifyTokenReq {
+    int64 user_id = 1;
+    string device_type =2;   // web, android, ios
+    string token = 3;
+}
+
+message VerifyTokenReply {
+    bool is_valid = 1;  // 是否有效
+    int64 expire_ts = 2; // 若is_valid为有效，该字段有效。 失效时间戳
+}
+
+service XXXLoginServer {
+    // 发送验证码
+    rpc SendVerifyCode(SendVerifyCodeReq)   returns (SendVerifyCodeReply)  {}
+    // 登录
+    rpc Login(LoginReq)   returns (LoginReply)  {}
+
+    // 验证token
+    rpc VerifyToken(VerifyTokenReq)   returns (VerifyTokenReply)  {}
+}
+
+

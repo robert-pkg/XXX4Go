@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package community.service.XXXSMS;
+
+// specify golang package name
+option go_package = "api";
+
+// NoArgReq
+message NoArgRequest{}
+// NoReply
+message NoReply{}
+
+message SendMsgReq {
+    string mobile = 1; 
+    string msg = 2;
+}
+
+service XXXSMS {
+
+    // 发送短信
+    rpc SendMsg(SendMsgReq)   returns (NoReply)  {}
+   
+}
+
+

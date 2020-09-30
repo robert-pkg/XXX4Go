@@ -1,0 +1,11 @@
+log:
+  logPath:  !!str /data/log/XXXUserServer/XXXUserServer.log
+  level: !!str info
+  encoding: !!str json
+  output_console: !!bool true
+
+db:
+  dsn: !!str root:123456@tcp(127.0.0.1:3306)/xxx?charset=utf8mb4&parseTime=True&loc=Local
+  active: !!int 5
+  idle: !!int 5
+  maxLiefTime: !!str 4h
