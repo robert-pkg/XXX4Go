@@ -1,15 +1,29 @@
-# Binaries for programs and plugins
+# idea ignore
+.idea/
+*.ipr
+*.iml
+*.iws
+
+.vscode/
+
+*.swp
+
+# temp ignore
+*.log
+*.cache
+*.diff
 *.exe
 *.exe~
-*.dll
-*.so
-*.dylib
+*.patch
+*.tmp
+*debug.test
 
-# Test binary, built with `go test -c`
-*.test
+# system ignore
+.DS_Store
+Thumbs.db
 
-# Output of the go coverage tool, specifically when used with LiteIDE
-*.out
+interface/*/cmd/cmd
+interface/*/cmd/debug
+services/*/cmd/cmd
+services/*/cmd/debug
 
-# Dependency directories (remove the comment below to include it)
-# vendor/

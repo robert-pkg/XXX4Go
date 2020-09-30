@@ -1,0 +1,14 @@
+log:
+  logPath:  !!str /data/log/XXXSMS/XXXSMS.log
+  level: !!str info
+  encoding: !!str json
+  output_console: !!bool true
+
+jaeger:
+  type: !!str rateLimiting
+  type_parm: !!float 100
+  log_spans: !!bool true
+  buffer_flush_interval: 1s
+  queue_size: 2000
+  agent_addr: !!str 127.0.0.1:6831
+

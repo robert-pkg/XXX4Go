@@ -5,16 +5,18 @@ package community.interface.XXXUserServer;
 // specify golang package name
 option go_package = "api";
 
-message SayHelloReq {
-    string message = 1;
-}
+// NoArgReq
+message NoArgRequest{}
+// NoReply
+message NoReply{}
 
-message SayHelloReply {
-    string reply = 1;
+message GetUserNameReply {
+    string name = 1;
 }
 
 service XXXUserServer {
-    rpc SayHello(SayHelloReq)   returns (SayHelloReply)  {}
+    rpc GetUserName(NoArgRequest)   returns (GetUserNameReply)  {}
+   
 }
 
 

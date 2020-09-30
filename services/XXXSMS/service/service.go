@@ -9,12 +9,9 @@ import (
 )
 
 // New init
-func New(c *conf.Config) *Service {
+func New() *Service {
 
-	s := &Service{
-		c: c,
-	}
-
+	s := &Service{}
 	return s
 }
 
@@ -28,7 +25,7 @@ func (s *Service) SendMsg(ctx context.Context, in *api.SendMsgReq) (resp *api.No
 
 	resp = &api.NoReply{}
 
-	log.Info("SendMsg")
+	log.Info("SendMsg", "mobile", in.Mobile, "msg", in.Msg)
 
 	return resp, nil
 }

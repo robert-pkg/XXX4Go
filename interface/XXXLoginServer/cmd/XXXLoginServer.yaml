@@ -1,0 +1,33 @@
+log:
+  logPath:  !!str /data/log/XXXLoginServer/XXXLoginServer.log
+  level: !!str info
+  encoding: !!str json
+  output_console: !!bool true
+
+jaeger:
+  type: !!str rateLimiting
+  type_parm: !!float 100
+  log_spans: !!bool true
+  buffer_flush_interval: 1s
+  queue_size: 2000
+  agent_addr: !!str 127.0.0.1:6831  
+
+db:
+  dsn: !!str root:123456@tcp(127.0.0.1:3306)/xxx?charset=utf8mb4&parseTime=True&loc=Local
+  active: !!int 5
+  idle: !!int 5
+  maxLiefTime: !!str 4h
+
+redis:
+  addr: !!str "127.0.0.1:6379"
+  pass: !!str ""
+  active: !!int 5
+  idle: !!int 5
+  db_number: !!int 0
+  idleTimeout: !!str 5m
+
+
+
+
+
+

@@ -1,0 +1,25 @@
+
+
+系统菜单管理：
+GetAllSysMenuList
+AddSysMenu
+AddSysButton
+UpdateSysMenu
+UpdateSysButton
+
+
+系统角色管理：
+AddSysRole
+UpdateRole
+GetSysMenusByRole       //  获取 指定角色的系统菜单
+UpdateSysMenusByRole   
+
+系统用户：
+GetSysUserList
+AddSysUser
+UpdateSysUser
+
+GetMySysMenus  获取我的系统菜单
+
+SendVCodeForLogin   发送登录验证码
+Login               登录，同时返回我的角色列表

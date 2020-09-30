@@ -7,6 +7,7 @@ import (
 
 	jaeger_trace "github.com/robert-pkg/micro-go/trace/jaeger-trace"
 
+	"github.com/robert-pkg/micro-go/db/mysql"
 	"github.com/robert-pkg/micro-go/log"
 	"gopkg.in/yaml.v2"
 )
@@ -23,7 +24,7 @@ type Config struct {
 
 	TraceConfig jaeger_trace.Config `yaml:"jaeger"`
 
-	
+	MysqlConfig *mysql.Config `yaml:"db"`
 }
 
 func (c *Config) loadFromFile(path string) error {

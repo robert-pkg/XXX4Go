@@ -1,8 +1,6 @@
 package model
 
-import "errors"
-
-func GetDeviceType(deviceTypeName string) (int, error) {
+func GetDeviceType(deviceTypeName string) int {
 	deviceType := 0
 	switch deviceTypeName {
 	case "web":
@@ -11,9 +9,7 @@ func GetDeviceType(deviceTypeName string) (int, error) {
 		deviceType = 2
 	case "ios":
 		deviceType = 3
-	default:
-		return 0, errors.New("no support device type")
 	}
 
-	return deviceType, nil
+	return deviceType
 }

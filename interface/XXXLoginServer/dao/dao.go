@@ -5,9 +5,8 @@ import (
 
 	"github.com/garyburd/redigo/redis"
 	"github.com/jinzhu/gorm"
-	redisHelper "github.com/robert-pkg/XXX4Go/common/cache/redis"
-	"github.com/robert-pkg/XXX4Go/common/db"
-	"github.com/robert-pkg/XXX4Go/interface/XXXLoginServer/conf"
+	redisHelper "github.com/robert-pkg/micro-go/cache/redis"
+	"github.com/robert-pkg/micro-go/db/mysql"
 	"github.com/robert-pkg/micro-go/log"
 )
 
@@ -18,23 +17,23 @@ type Dao struct {
 }
 
 // New new a dao.
-func New(c *conf.Config) (*Dao, error) {
+func New(dbConfig *mysql.Config, redisConfig *redisHelper.Config) (*Dao, error) {
 
-	if c.DBConfig == nil {
+	if dbConfig == nil {
 		return nil, errors.New("no db config")
 	}
 
-	if c.RedisConfig == nil {
+	if redisConfig == nil {
 		return nil, errors.New("no redis config")
 	}
 
-	gormDB, err := db.InitDb(c.DBConfig)
+	gormDB, err := mysql.InitDb(dbConfig)
 	if err != nil {
 		log.Error("err", "err", err)
 		return nil, err
 	}
 
-	redisPool := redisHelper.NewRedisPool(c.RedisConfig)
+	redisPool := redisHelper.NewRedisPool(redisConfig)
 
 	d := &Dao{
 		gormDB:    gormDB,

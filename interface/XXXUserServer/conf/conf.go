@@ -5,7 +5,7 @@ import (
 	"flag"
 	"io/ioutil"
 
-	"github.com/robert-pkg/XXX4Go/common/db"
+	"github.com/robert-pkg/micro-go/db/mysql"
 	"github.com/robert-pkg/micro-go/log"
 	"gopkg.in/yaml.v2"
 )
@@ -21,7 +21,7 @@ type Config struct {
 	Log log.LogConfig `yaml:"log"`
 
 	// 登录数据库
-	DBConfig *db.Config `yaml:"db"`
+	MysqlConfig *mysql.Config `yaml:"db"`
 }
 
 func (c *Config) loadFromFile(path string) error {

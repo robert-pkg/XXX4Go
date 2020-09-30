@@ -57,6 +57,7 @@ func (dao *Dao) GetUserTokenFromRedis(userID int64, deviceType int, token string
 
 	if expireTimeStamp, err = redis.Int64(conn.Do("GET", key)); err != nil {
 		if err != redis.ErrNil {
+			log.Error("err", "err", err)
 			return false, 0, err
 		}
 

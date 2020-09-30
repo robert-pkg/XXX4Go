@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package community.service.UserCenter;
+
+// specify golang package name
+option go_package = "api";
+
+// NoArgReq
+message NoArgRequest{}
+// NoReply
+message NoReply{}
+
+message GetUserIDByMobileReq {
+    string mobile = 1; 
+    bool autoCreate = 2;      
+}
+
+message GetUserIDByMobileReply {
+    int64 user_id = 1;  
+    bool is_new = 2;      
+}
+
+service UserCenter {
+
+    // 发送短信
+    rpc GetUserIDByMobile(GetUserIDByMobileReq)   returns (GetUserIDByMobileReply)  {}
+   
+}

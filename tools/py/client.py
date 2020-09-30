@@ -32,7 +32,7 @@ def callInterface(device_type, data, userID, token, serviceName, method):
     try:
         r = requests.post(url=url, headers=headers, data=strData)
         if r.status_code != 200:
-            print("http状态码错误")
+            print("http状态码错误. text:[%s]" % r.text)
             return False, ""
 
         print(r.text)
@@ -117,12 +117,10 @@ def login(mobile, vCode):
 
     return True, userID, token, expireTS
 
-def sayHello(userID, token, msg):
-    data = {
-        "message": msg,
-    }
+def GetUserName(userID, token):
+    data = {}
 
-    isSuccess,respText = callInterface("web", data, userID, token, "XXXUserServer", "SayHello")
+    isSuccess,respText = callInterface("web", data, userID, token, "XXXUserServer", "GetUserName")
      # respObj = json.loads(respText)    
     return isSuccess,respText
     
@@ -134,20 +132,25 @@ def main():
     if not success:
         return
 
+    #if True:
+    #    return 
+
     success,userID,token,expireTS = login(mobile, vcode)
     if not success:
         return
     else:
         print("登录成功. 返回: userID:[%d], token:[%s], expireTS:[%d]" % (userID, token, expireTS))
 
-    for i in range(1,5):
-        msg = " world %d" % i
-        isSuccess, respText = sayHello(userID, token, msg)    
+    #if True:
+    #    return
+
+    for i in range(1,2):
+        isSuccess, respText = GetUserName(userID, token)    
         if not isSuccess:
             print("fail")
             break
 
-        print("sayHello resp:%s" % respText)
+        print("GetUserName resp:%s" % respText)
 
 if __name__ == '__main__':
     main()
